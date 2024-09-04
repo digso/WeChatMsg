@@ -104,15 +104,19 @@ def singleton(cls):
 
 @singleton
 class HardLink:
-    def __init__(self):
+    def __init__(self, path=None):
         self.imageDB = None
         self.videoDB = None
         self.image_cursor = None
         self.video_cursor = None
         self.open_flag = False
-        self.init_database()
+        self.init_database(path)
 
-    def init_database(self):
+    def init_database(self, path):
+        global image_db_path, video_db_path
+        if path:
+            image_db_path = f'{path}/HardLinkImage.db'
+            video_db_path = f'{path}/HardLinkVideo.db'
         if not self.open_flag:
             if os.path.exists(image_db_path):
                 self.imageDB = sqlite3.connect(image_db_path, check_same_thread=False)

@@ -29,12 +29,12 @@ def close_db():
     media_msg_db.close()
 
 
-def init_db():
-    misc_db.init_database()
-    msg_db.init_database()
-    micro_msg_db.init_database()
-    hard_link_db.init_database()
-    media_msg_db.init_database()
+def init_db(path=None):
+    misc_db.init_database(path)
+    msg_db.init_database(path)
+    micro_msg_db.init_database(path)
+    hard_link_db.init_database(path)
+    media_msg_db.init_database(path)
 
 
 __all__ = ['misc_db', 'micro_msg_db', 'msg_db', 'hard_link_db', 'MsgType', "media_msg_db", "close_db"]

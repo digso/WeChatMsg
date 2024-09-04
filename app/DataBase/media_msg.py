@@ -37,13 +37,16 @@ def singleton(cls):
 
 @singleton
 class MediaMsg:
-    def __init__(self):
+    def __init__(self, path=None):
         self.DB = None
         self.cursor: sqlite3.Cursor = None
         self.open_flag = False
-        self.init_database()
+        self.init_database(path)
 
-    def init_database(self):
+    def init_database(self, path=None):
+        global db_path
+        if path:
+            db_path = f'{path}/MediaMSG.db'
         if not self.open_flag:
             if os.path.exists(db_path):
                 self.DB = sqlite3.connect(db_path, check_same_thread=False)

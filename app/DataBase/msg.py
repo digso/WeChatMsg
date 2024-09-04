@@ -139,17 +139,17 @@ class MsgType:
 
 
 class Msg:
-    def __init__(self):
+    def __init__(self, path=None):
         self.DB = None
         self.cursor = None
         self.open_flag = False
-        self.init_database()
+        self.init_database(path)
 
     def init_database(self, path=None):
         global db_path
         if not self.open_flag:
             if path:
-                db_path = path
+                db_path = f'{path}/MSG.db'
             if os.path.exists(db_path):
                 self.DB = sqlite3.connect(db_path, check_same_thread=False)
                 # '''创建游标'''

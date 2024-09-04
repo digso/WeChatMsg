@@ -1,5 +1,6 @@
 from app.decrypt.get_bias_addr import BiasAddr
 from app.decrypt.get_wx_info import read_info
+import app.DataBase as db
 
 from PyQt5.QtCore import pyqtSignal, QThread
 class DecryptThread(QThread):
